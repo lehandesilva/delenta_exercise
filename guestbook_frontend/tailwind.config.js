@@ -11,6 +11,9 @@ module.exports = {
       "3/4": "75%",
       full: "100%",
     },
+    width: {
+      "580px": "580px",
+    },
     extend: {},
   },
   plugins: [],

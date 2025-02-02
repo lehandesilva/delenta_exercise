@@ -2,15 +2,22 @@
   <div>
     <h1 class="text-2xl font-semibold">Posts</h1>
   </div>
-  <div class="my-5 flex">
+  <div class="my-5 flex flex-wrap">
     <div
-      class="px-6 py-4 mx-5 bg-yellow-200 cursor-pointer rounded-xl min-w-30px border border-black hover:border-b-4"
+      class="px-6 py-4 mx-5 my-5 bg-yellow-200 cursor-pointer rounded-xl w-580px border border-black hover:border-b-4"
     >
-      <h3 class="font-semibold text-lg">{{ postTitle }}</h3>
-      <input class="p-3 mt-2 bg-yellow-100 rounded-md w-full" />
-      <div class="flex mt-3 justify-end">
-        <button (click)="handlePostSubmit()" class="btn py-1 mr-0">Post</button>
+      <h3 class="font-semibold text-lg">Enter post Title</h3>
+      <input
+        class="p-3 mt-2 bg-yellow-100 rounded-md h-20"
+        placeholder="Post message..."
+        style="width: 100%"
+      />
+      <div class="flex justify-end items-center mt-6">
+        <button (click)="handlePostSubmit()" class="btn mr-0 py-1">Post</button>
       </div>
     </div>
+    <ng-container *ngFor="let post of posts">
+      <app-post [post]="post"></app-post>
+    </ng-container>
   </div>
 </div>

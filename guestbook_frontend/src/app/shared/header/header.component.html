@@ -1,7 +1,12 @@
 <div class="p-4 flex justify-between items-center rounded-b-lg mb-4">
-  <h1 class="text-3xl font-bold ml-12">Guest Book</h1>
+  <h1 class="text-3xl font-bold ml-12">
+    Delenta Guestbook Application Exercise
+  </h1>
   <div>
     <a href="profile" class="btn">PROFILE</a>
-    <a href="login" class="btn ml-12 bg-yellow-400">LOGIN</a>
+    <a *ngIf="!isLoggedIn" href="register" class="btn ml-12 bg-yellow-400"
+      >REGISTER</a
+    >
+    <a *ngIf="isLoggedIn" href="login" class="btn ml-12 bg-yellow-400">LOGIN</a>
   </div>
 </div>
