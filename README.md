@@ -24,3 +24,7 @@ The guestbook application allows visitors to leave comments or messages on a web
 Upon completion, the code will be hosted in a new GitHub repository and shared with Delenta for review.
 
 Thank you for the opportunity to showcase my skills through this exercise.
+
+Todo:
+Invalid post id and and no post id should route to 404 page.
+Add error handling for all routes/services

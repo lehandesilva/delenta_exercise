@@ -5,6 +5,6 @@
 
 @layer components {
   .btn {
-    @apply px-5 py-2 mr-4 rounded-full font-semibold bg-yellow-100 border border-black;
+    @apply px-5 py-2 mr-4 rounded-full font-semibold bg-yellow-100 border border-black hover:bg-yellow-300;
   }
 }

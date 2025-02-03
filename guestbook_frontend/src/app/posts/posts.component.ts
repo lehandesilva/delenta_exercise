@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Post } from 'src/types/post';
+import { PostsService } from './posts.service';
 
 @Component({
   selector: 'app-posts',
@@ -7,35 +8,17 @@ import { Post } from 'src/types/post';
   styleUrls: ['./posts.component.css'],
 })
 export class PostsComponent implements OnInit {
-  postTitle = 'Post Title';
-  postContent = 'Post Content';
+  posts: Post[] = [];
 
-  posts: Post[] = [
-    {
-      title: 'Post 1',
-      content: 'This is the first post',
-      author: 'Author 1',
-    },
-    {
-      title: 'Post 2',
-      content: 'This is the second post',
-      author: 'Author 2',
-    },
-    {
-      title: 'Post 3',
-      content: 'This is the second post',
-      author: 'Author 2',
-    },
-    {
-      title: 'Post 4',
-      content: 'This is the second post',
-      author: 'Author 2',
-    },
-  ];
+  constructor(private postsService: PostsService) {}
 
-  constructor() {}
+  ngOnInit(): void {
+    this.getPosts();
+  }
 
-  ngOnInit(): void {}
+  getPosts(): void {
+    this.postsService.getPosts().subscribe((posts) => (this.posts = posts));
+  }
 
   handlePostSubmit() {
     console.log('Post submitted');
