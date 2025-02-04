@@ -4,19 +4,4 @@
   <div class="content mb-6 p-3 mt-2 bg-yellow-100 rounded-md">
     <p class="text-base text-gray-800">{{ post.content }}</p>
   </div>
-  <div class="comments">
-    <h2 class="text-2xl font-semibold mb-4">Comments</h2>
-    <div *ngIf="post.comments.length === 0" class="text-gray-600 text-lg">
-      No comments yet
-    </div>
-    <div *ngIf="post.comments.length > 0">
-      <div
-        *ngFor="let comment of post.comments"
-        class="mb-4 p-4 border rounded-lg"
-      >
-        <p class="text-sm text-gray-600">{{ comment.author }}</p>
-        <p class="text-base text-gray-800">{{ comment.content }}</p>
-      </div>
-    </div>
-  </div>
 </div>

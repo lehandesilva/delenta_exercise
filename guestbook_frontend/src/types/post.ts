@@ -3,7 +3,6 @@ export type Post = {
   title: string;
   content: string;
   author: string;
-  noOfComments: number;
 };
 
 export type Post_Detail = {
@@ -12,8 +11,6 @@ export type Post_Detail = {
   content: string;
   author_id: string;
   author_name: string;
-  noOfComments: number;
-  comments: Comment[] | null;
 };
 
 export type Comment = {

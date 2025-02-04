@@ -3,6 +3,9 @@ import mongoose from "mongoose";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import authRouter from "./routes/auth";
+import adminRouter from "./routes/admin";
+import profilRouter from "./routes/user";
+import postRouter from "./routes/post";
 
 const app: Application = express();
 const PORT = 5000;
@@ -28,6 +31,9 @@ app.get("/", (req, res) => {
   res.send("Hello from server");
 });
 app.use("/auth", authRouter);
+app.use("/admin", adminRouter);
+app.use("/profile", profilRouter);
+app.use("/post", postRouter);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
