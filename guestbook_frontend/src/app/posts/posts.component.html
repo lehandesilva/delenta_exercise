@@ -1,10 +1,11 @@
-<div class="p-4 w-full">
+<div class="p-4" style="width: 100%">
   <div>
     <h1 class="text-2xl font-semibold">Posts</h1>
   </div>
-  <div class="my-5 flex flex-wrap">
+  <div class="flex justify-center">
     <div
-      class="px-6 py-4 mx-5 my-5 bg-yellow-200 cursor-pointer rounded-xl w-580px border border-black hover:border-b-4"
+      class="px-6 py-4 mx-5 mt-12 mb-5 bg-yellow-200 cursor-pointer rounded-xl border border-black"
+      style="width: 50%"
     >
       <h3 class="font-semibold text-lg">Enter post Title</h3>
       <input
@@ -16,8 +17,10 @@
         <button (click)="handlePostSubmit()" class="btn mr-0 py-1">Post</button>
       </div>
     </div>
-    <ng-container *ngFor="let post of posts">
-      <app-post [post]="post"></app-post>
-    </ng-container>
   </div>
+</div>
+<div class="my-5 flex flex-wrap">
+  <ng-container *ngFor="let post of posts">
+    <app-post [post]="post"></app-post>
+  </ng-container>
 </div>

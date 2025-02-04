@@ -1,13 +1,14 @@
 <div class="flex justify-center mt-14">
   <div class="min-w-1/4 p-8 bg-yellow-200 rounded-xl border border-black">
     <h2 class="text-4xl font-bold mb-6 text-center">Sign In</h2>
-    <form>
+    <form (ngSubmit)="login()">
       <div class="mb-4">
         <label class="block font-semibold mb-2" for="email"> Email </label>
         <input
           class="border rounded py-2 px-3 bg-yellow-100"
           style="width: 100%"
-          id="email"
+          [(ngModel)]="email"
+          name="email"
           type="email"
           placeholder="Enter your email"
         />
@@ -19,17 +20,21 @@
         <input
           class="border rounded py-2 px-3 bg-yellow-100"
           style="width: 100%"
-          id="password"
+          [(ngModel)]="password"
+          name="password"
           type="password"
           placeholder="Enter your password"
         />
       </div>
-      <div class="flex items-center justify-between">
-        <button class="btn" type="button">Sign In</button>
-        <a routerLink="/register">
-          <button class="btn" type="button">Register</button>
-        </a>
+      <p class="text-center font-semibold">{{ errorMessage }}</p>
+      <div class="flex justify-center" style="width: 100%">
+        <button class="btn mb-4" type="submit">Sign In</button>
       </div>
     </form>
+    <a routerLink="/register">
+      <button class="text-center" style="width: 100%">
+        Create new account
+      </button>
+    </a>
   </div>
 </div>

@@ -1,13 +1,14 @@
 <div class="flex justify-center mt-14">
   <div class="min-w-1/4 p-8 bg-yellow-200 rounded-xl border border-black">
     <h2 class="text-4xl font-bold mb-6 text-center">Create account</h2>
-    <form>
+    <form (ngSubmit)="register()">
       <div class="mb-4">
         <label class="block font-semibold mb-2" for="email"> Email </label>
         <input
+          [(ngModel)]="email"
           class="border rounded py-2 px-3 bg-yellow-100"
           style="width: 100%"
-          id="email"
+          name="email"
           type="email"
           placeholder="Enter your email"
         />
@@ -15,9 +16,10 @@
       <div class="mb-4">
         <label class="block font-semibold mb-2" for="email"> Username </label>
         <input
+          [(ngModel)]="name"
           class="border rounded py-2 px-3 bg-yellow-100"
           style="width: 100%"
-          id="username"
+          name="username"
           type="text"
           placeholder="Enter your username"
         />
@@ -27,24 +29,24 @@
           Password
         </label>
         <input
+          [(ngModel)]="password"
           class="border rounded py-2 px-3 bg-yellow-100"
           style="width: 100%"
-          id="password"
+          name="password"
           type="password"
           placeholder="Enter your password"
         />
       </div>
-      <div class="flex flex-col items-center">
-        <button class="btn" type="button">Create account</button>
-        <div>
-          <p class="inline">Already a member?</p>
-          <a routerLink="/login">
-            <button class="font-semibold underline ml-2 mt-4" type="button">
-              Sign in
-            </button>
-          </a>
-        </div>
+      <p class="text-center font-semibold mb-6">{{ errorMessage }}</p>
+      <div class="flex justify-center" style="width: 100%">
+        <button class="btn mb-6" type="submit">Create account</button>
       </div>
     </form>
+    <p class="text-center" style="width: 100%">Already a member?</p>
+    <a routerLink="/login">
+      <button class="font-semibold underline" style="width: 100%">
+        Sign in
+      </button>
+    </a>
   </div>
 </div>

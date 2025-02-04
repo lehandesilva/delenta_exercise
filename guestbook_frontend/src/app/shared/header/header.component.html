@@ -3,11 +3,14 @@
     Delenta Guestbook Application Exercise
   </a>
   <div>
-    <a routerLink="profile" class="btn">PROFILE</a>
+    <a *ngIf="isAdmin" routerLink="admin" class="btn">ADMIN PANEL</a>
     <a *ngIf="!isLoggedIn" routerLink="login" class="btn ml-12 bg-yellow-400"
       >LOGIN</a
     >
-    <a *ngIf="isLoggedIn" routerLink="login" class="btn ml-12 bg-yellow-400"
+    <a
+      *ngIf="isLoggedIn"
+      (click)="logout()"
+      class="btn ml-12 bg-yellow-400 cursor-pointer"
       >SIGN OUT</a
     >
   </div>
