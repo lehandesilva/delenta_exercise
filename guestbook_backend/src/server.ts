@@ -4,7 +4,7 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 import authRouter from "./routes/auth";
 import adminRouter from "./routes/admin";
-import profilRouter from "./routes/user";
+import profileRouter from "./routes/user";
 import postRouter from "./routes/post";
 
 const app: Application = express();
@@ -32,7 +32,7 @@ app.get("/", (req, res) => {
 });
 app.use("/auth", authRouter);
 app.use("/admin", adminRouter);
-app.use("/profile", profilRouter);
+app.use("/profile", profileRouter);
 app.use("/post", postRouter);
 
 app.listen(PORT, () => {

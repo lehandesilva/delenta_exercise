@@ -11,7 +11,7 @@ import {
 const router = Router();
 
 router.put("/change-password", verifyToken, changePassword);
-router.put("/forgot-password", forgotPassword);
+router.post("/forgot-password", forgotPassword);
 router.put("/reset-password", resetPassword);
 router.put("/change-username", verifyToken, changeUsername);
 router.delete("/delete-account", verifyToken, deleteAccount);

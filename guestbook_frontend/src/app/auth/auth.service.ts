@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private baseUrl = 'http://localhost:5000/auth';
+  private baseUrl = `${environment.BACKEND_API}/auth`;
   private user: { name: string; type: string } | null = null;
   private userSubject = new BehaviorSubject<{
     name: string;

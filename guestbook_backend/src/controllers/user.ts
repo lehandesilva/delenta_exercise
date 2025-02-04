@@ -55,12 +55,12 @@ export const forgotPassword = async (req: Request, res: Response) => {
       { expiresIn: "15m" }
     );
 
-    const resetLink = `http://localhost:4200/profile/reset-password?token=${token}`;
+    const resetLink = `http://localhost:4200/reset-password?token=${token}`;
 
     // send the reset link via email (here its logged for demonstration)
     console.log(resetLink);
 
-    res.status(200);
+    res.status(200).json({ message: `Sent email to ${email}` });
   } catch (error) {
     res.status(500).json({ message: "Server error", error });
   }
@@ -94,7 +94,7 @@ export const resetPassword = async (req: Request, res: Response) => {
           // update the user's password
           await User.findByIdAndUpdate(user._id, { password: hashedPw });
 
-          res.status(200);
+          res.status(200).json({ message: "Password changed" });
         }
       );
     }
