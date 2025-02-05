@@ -7,7 +7,9 @@ import { PostDetailService } from './post-detail.service';
   templateUrl: './post-detail.component.html',
 })
 export class PostDetailComponent implements OnInit {
-  post: any;
+  title = '';
+  content = '';
+  author = null;
 
   constructor(
     private route: ActivatedRoute,
@@ -19,8 +21,12 @@ export class PostDetailComponent implements OnInit {
     if (!postId) {
       return;
     }
-    this.postDetailService.getPost(postId).subscribe((data) => {
-      this.post = data;
+    this.postDetailService.getPost(postId).subscribe({
+      next: (res: any) => {
+        this.author = res.author.name;
+        this.title = res.title;
+        this.content = res.content;
+      },
     });
   }
 }

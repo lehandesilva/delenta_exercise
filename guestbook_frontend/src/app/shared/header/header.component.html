@@ -4,6 +4,7 @@
   </a>
   <div>
     <a *ngIf="isAdmin" routerLink="admin" class="btn">ADMIN PANEL</a>
+    <a *ngIf="isLoggedIn" routerLink="profile" class="btn">PROFILE</a>
     <a *ngIf="!isLoggedIn" routerLink="login" class="btn ml-12 bg-yellow-400"
       >LOGIN</a
     >

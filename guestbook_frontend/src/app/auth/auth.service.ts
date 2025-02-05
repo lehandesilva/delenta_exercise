@@ -8,8 +8,9 @@ import { environment } from 'src/environments/environment';
 })
 export class AuthService {
   private baseUrl = `${environment.BACKEND_API}/auth`;
-  private user: { name: string; type: string } | null = null;
+  private user: { id: string; name: string; type: string } | null = null;
   private userSubject = new BehaviorSubject<{
+    id: string;
     name: string;
     type: string;
   } | null>(this.getStoredUser());
@@ -21,13 +22,21 @@ export class AuthService {
   }
 
   register(name: string, email: string, password: string): Observable<any> {
-    return this.http.put(`${this.baseUrl}/register`, { name, email, password });
+    return this.http.put(
+      `${this.baseUrl}/register`,
+      { name, email, password },
+      { withCredentials: true }
+    );
   }
 
   login(email: string, password: string): Observable<any> {
-    return this.http.post(`${this.baseUrl}/login`, { email, password });
+    return this.http.post(
+      `${this.baseUrl}/login`,
+      { email, password },
+      { withCredentials: true }
+    );
   }
-  setUser(user: { name: string; type: string }) {
+  setUser(user: { id: string; name: string; type: string }) {
     this.user = user;
     localStorage.setItem('user', JSON.stringify(user));
     this.userSubject.next(user);
@@ -39,7 +48,11 @@ export class AuthService {
     return this.user;
   }
 
-  getUserObservable(): Observable<{ name: string; type: string } | null> {
+  getUserObservable(): Observable<{
+    id: string;
+    name: string;
+    type: string;
+  } | null> {
     return this.userSubject.asObservable();
   }
 
@@ -47,5 +60,10 @@ export class AuthService {
     this.user = null;
     localStorage.removeItem('user');
     this.userSubject.next(null);
+    return this.http.post(
+      `${this.baseUrl}/logout`,
+      {},
+      { withCredentials: true }
+    );
   }
 }

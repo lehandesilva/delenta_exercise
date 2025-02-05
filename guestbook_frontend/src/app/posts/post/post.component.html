@@ -2,7 +2,7 @@
   class="px-6 py-4 mx-5 my-5 bg-yellow-200 cursor-pointer rounded-xl border border-black hover:border-b-4"
   style="width: 580px"
 >
-  <a [routerLink]="['/post-detail', post.id]">
+  <a [routerLink]="['/post-detail', post._id]">
     <h3 class="font-semibold text-lg">{{ post.title }}</h3>
     <p class="p-3 mt-2 bg-yellow-100 rounded-md overflow-hidden h-26">
       {{ post.content }}

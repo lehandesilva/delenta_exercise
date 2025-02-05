@@ -27,7 +27,7 @@ export async function changePassword(req: AuthenticatedRequest, res: Response) {
         } else {
           const hashedPw = await bcrypt.hash(newPassword, 12);
           await changeUserPassword(userId, hashedPw);
-          res.status(200);
+          res.status(200).json({ message: "Changed password" });
         }
       }
     }
@@ -104,25 +104,32 @@ export const resetPassword = async (req: Request, res: Response) => {
 };
 
 // delete account
-export const deleteAccount = async (req: Request, res: Response) => {
+export const deleteAccount = async (
+  req: AuthenticatedRequest,
+  res: Response
+) => {
   try {
-    const { userId } = req.body;
+    const userId = req.user?.id;
 
     //   delete the user
     await User.findByIdAndDelete(userId);
-    res.status(200);
+    res.status(200).json({ message: "Account deleted" });
   } catch (error) {
     res.status(500).json({ message: "Server error", error });
   }
 };
 // username change
-export const changeUsername = async (req: Request, res: Response) => {
+export const changeUsername = async (
+  req: AuthenticatedRequest,
+  res: Response
+) => {
   try {
-    const { userId, newUsername } = req.body;
+    const { newUsername } = req.body;
+    const userId = req.user?.id;
 
     //   update the user's username
-    await User.findByIdAndUpdate(userId, { username: newUsername });
-    res.status(200);
+    await User.findByIdAndUpdate(userId, { name: newUsername });
+    res.status(200).json({ message: "Changed username" });
   } catch (error) {
     res.status(500).json({ message: "Server error", error });
   }

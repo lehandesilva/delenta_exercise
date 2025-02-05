@@ -3,7 +3,7 @@ import { Post } from "../models/Post";
 
 export async function getAllUsers() {
   try {
-    const users = await User.find().select("id name email");
+    const users = await User.find({}, "name email banned");
     return users;
   } catch (error) {
     throw new Error(`Failed to get all users: ${error}`);

@@ -54,11 +54,14 @@ export async function login(req: Request, res: Response) {
         );
         // send token in cookie
         res.cookie("token", token, {
-          httpOnly: true, // Prevent client-side access
+          httpOnly: true,
+          secure: false,
           maxAge: 3600000, // 1 hour in milliseconds
         });
         // send user data in response
-        res.status(200).json({ name: user.name, type: user.type });
+        res
+          .status(200)
+          .json({ id: user._id, name: user.name, type: user.type });
       }
     }
   } catch (error) {

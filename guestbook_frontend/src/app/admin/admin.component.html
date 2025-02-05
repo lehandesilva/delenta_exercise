@@ -1,1 +1,28 @@
-<p>admin works!</p>
+<div class="flex justify-center mt-14">
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Actions</th>
+    </tr>
+    <tr *ngFor="let user of users">
+      <td>{{ user.name }}</td>
+      <td>
+        <button
+          *ngIf="user.banned === false"
+          (click)="banUser(user._id)"
+          class="mx-10"
+        >
+          Ban
+        </button>
+        <button
+          *ngIf="user.banned === true"
+          (click)="unBanUser(user._id)"
+          class="mx-10"
+        >
+          Unban
+        </button>
+        <button (click)="deleteUser(user._id)">Delete</button>
+      </td>
+    </tr>
+  </table>
+</div>

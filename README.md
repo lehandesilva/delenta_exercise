@@ -12,11 +12,11 @@ The guestbook application allows visitors to leave comments or messages on a web
 [] - **User Authentication**: Users can log in, and their entries will be associated with their accounts.
 
 - **User Management**:
-  [] - Password management
+  [X] - Password management
   [X] - Forgot password functionality
-  [] - Username edit capability
-  [] - Account deletion
-  [] - **Admin Panel**: Admin users can manage all posts, ban users, and delete accounts.
+  [X] - Username edit capability
+  [X] - Account deletion
+  [X] - **Admin Panel**: Admin users can manage all posts, ban users, and delete accounts.
 
 Todo:
 Invalid post id and and no post id should route to 404 page.

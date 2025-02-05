@@ -9,6 +9,8 @@ import { PostsModule } from './posts/posts.module';
 import { ErrorPageComponent } from './shared/error-page/error-page.component';
 import { AdminComponent } from './admin/admin.component';
 import { AuthModule } from './auth/auth.module';
+import { ProfileModule } from './profile/profile.module';
+import { PostDetailModule } from './post-detail/post-detail.module';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,8 @@ import { AuthModule } from './auth/auth.module';
     HttpClientModule,
     PostsModule,
     AuthModule,
+    ProfileModule,
+    PostDetailModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

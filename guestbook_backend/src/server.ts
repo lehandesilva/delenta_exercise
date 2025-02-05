@@ -10,9 +10,13 @@ import postRouter from "./routes/post";
 const app: Application = express();
 const PORT = 5000;
 
+app.use(express.json());
+app.use(cookieParser());
+
 app.use(
   cors({
-    origin: "*", // Allow all origins
+    // origin: "*", // Allow all origins
+    origin: "http://localhost:4200", // Allow all origins
     credentials: true, // Allow credentials (cookies) to be sent
   })
 );
@@ -23,9 +27,6 @@ mongoose
   .connect(mongoURI)
   .then(() => console.log("MongoDB connected"))
   .catch((err) => console.error("MongoDB connection error:", err));
-
-app.use(express.json());
-app.use(cookieParser());
 
 app.get("/", (req, res) => {
   res.send("Hello from server");

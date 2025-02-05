@@ -1,17 +1,20 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
-import { Post_Detail } from 'src/types/post';
-import { Post_Detail as mockData } from './post-mock';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PostDetailService {
-  constructor() {}
+  private apiUrl = `${environment.BACKEND_API}/post`; // Adjust API URL as needed
 
-  getPost(id: string): Observable<Post_Detail> {
-    const post = mockData.find((post) => post.id === id);
-    return of(post as Post_Detail);
+  constructor(private http: HttpClient) {}
+
+  getPost(id: string) {
+    console.log('called');
+    return this.http.get(`${this.apiUrl}/post/${id}`, {
+      withCredentials: true,
+    });
   }
 }

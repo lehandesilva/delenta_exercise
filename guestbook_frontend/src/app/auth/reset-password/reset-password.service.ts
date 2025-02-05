@@ -13,14 +13,19 @@ export class ResetPasswordService {
       `${environment.BACKEND_API}/profile/forgot-password`,
       {
         email,
-      }
+      },
+      { withCredentials: true }
     );
   }
 
   resetPassword(token: string, newPassword: string) {
-    return this.http.put(`${environment.BACKEND_API}/profile/reset-password`, {
-      token,
-      newPassword,
-    });
+    return this.http.put(
+      `${environment.BACKEND_API}/profile/reset-password`,
+      {
+        token,
+        newPassword,
+      },
+      { withCredentials: true }
+    );
   }
 }

@@ -1,0 +1,12 @@
+<p>Change username</p>
+<form (ngSubmit)="changeUserName()">
+  <label for="newPassword">Enter new username</label>
+  <input
+    type="text"
+    class="border"
+    [(ngModel)]="newUsername"
+    name="newUsername"
+  />
+  <button type="submit">Set new username</button>
+</form>
+<p>{{ userFeedback }}</p>
